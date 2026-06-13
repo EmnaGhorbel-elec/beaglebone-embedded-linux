@@ -1,0 +1,23 @@
+/dts-v1/;
+/plugin/;
+
+&{/} {
+    SpeedM_device {
+        compatible = "MP_emb,sm-pulse";
+        pinctrl-names = "default";
+        /* Utilisation des phandles vers les contrôleurs GPIO */
+        inputcapture-gpios = <&gpio0 30 0>;  /* P9.11 (GPIO 30) */
+        inputcaptureLED-gpios = <&gpio2 4 0>;  /* P8.10 (GPIO 68) */
+        status = "okay";
+    };
+};
+
+/*
+dtc -I dts -O dtb -o SpeedMmeas.dtbo SpeedMmeas.dts
+sudo cp SpeedMmeas.dtbo /boot/dtbs/$(uname -r)
+sudo cp SpeedMmeas.dtbo /boot/dtbs/$(uname -r)/overlays
+add:
+    uboot_overlay_addr6=SpeedMmeas.dtbo to /boot/uEnv.txt
+    reboot
+    vérifier avec : ls -l /proc/device-tree/
+*/
