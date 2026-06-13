@@ -249,7 +249,7 @@ until 'q' or 1000 samples
 
 ```bash
 # Compile on BBB
-gcc pwm_main_v2.c -o pwm_test -lm
+gcc pwm_main.c -o pwm_test -lm
 
 ./pwm_test          # CSV only
 ./pwm_test --save   # CSV + PNG graph (requires gnuplot)
